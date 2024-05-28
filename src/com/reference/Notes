@@ -1,0 +1,34 @@
+
+-Method reference is used to refer method of functional interface. It is compact and easy form of lambda expression.
+A method reference is the shorthand syntax for a lambda expression that contains just one method call.
+so basically with method reference we give reference to existing method.
+-Types of Method References :-
+1) Reference to a static method.
+2) Reference to an instance method.
+3) Reference to a constructor.
+4) Reference to an instance method of an arbitrary object of a particular type.
+eg. Collections.sort(fruits, String::compareTo);
+
+We can make use of super & this keyword in writing Method references accordingly.
+
+
+For single parametrized constructor of any type we can use in build The Function<T, R> interface.
+eg. Function<String, Fruit> createFruit = Fruit::new;
+
+
+interface DiFunction<T,U,R>{
+    R apply(T t,U u);
+}
+With this user defined interface we call two parameterize constructor of any class and return object of that class.
+
+
+interface DoubleParameter{
+    Fruit getFruit(String name,String season);
+}
+This will return object of Fruit class only accepting two parameter.
+
+
+You can call any getter from a plain Java bean with such a method reference.
+        Function<Fruit,String> function = Fruit::getName;
+        String name = function.apply(new Fruit("Apple","All season"));
+

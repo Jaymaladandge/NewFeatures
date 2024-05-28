@@ -1,0 +1,88 @@
+An Interface that contains exactly one abstract method is known as functional interface. It can have any number of default,
+static methods but can contain only one abstract method. It can also declare methods of object class.
+
+Default methods can be directly used in a class implementing the interface as well as can be overridden and redefined.
+Static methods are required to be called using the name of the interface preceding the method name.
+These cannot be overridden by the classes implementing the interface.
+
+@FunctionalInterface Annotation is written above the interface declaration. when mentioned java compiler ensures
+that the interface has only one abstract method.
+If we try to add more than one abstract method, the compiler flags an Unexpected @FunctionalInterface annotation message.
+
+Java has pre-defined or built-in functional interfaces for commonly occurring cases.
+Runnable, Comparable, ActionListener, Callable.
+
+Types of Functional interfaces. 1)Consumer 2)Predicate 3)Function 4)Supplier
+
+A functional interface in Java can extend other Interfaces.
+interface BookStore{
+    int sell();
+    int buy();
+    List<String> customers();
+//    boolean issue_book();
+}
+
+@FunctionalInterface
+interface Library extends BookStore{
+    boolean issue_book();
+}
+The compiler throws an exception, as the BookStore interface has 3 abstract methods.
+Thus, the Library interface can't extend BookStore.
+
+
+@FunctionalInterface
+interface Library{
+    boolean issue_book();
+}
+
+interface BookStore extends Library{
+    int sell();
+    int buy();
+    List<String> customers();
+//    boolean issue_book();
+}
+The BookStore interface can extend Library as BookStore is a normal Interface. There is no compilation error.
+
+
+-----------------------*************************************----------------------
+
+
+Consumer.
+Consumer is a functional interface that accepts an argument and returns no result. defined in the java.util.function package.
+The interface contains two methods:
+accept() :- This method accepts a single input and performs the given operation on the input without returning any result.
+andThen() :- This method is used to chain multiple Consumer interface implementations one after another.
+ The method returns a composed consumer of different implementations defined in the order.
+ If the evaluation of any Consumer implementation along the chain throws an exception,
+ it is relayed to the caller of the composed function.
+
+
+Supplier
+The Supplier Interface is a part of the java.util.function package.
+It represents a function that does not take in any argument but produces a value of type T.
+It contains only one method.
+T get(); T: denotes the type of the result
+
+
+Predicate
+allows programmers to test a specific condition imposed on values or objects.
+Such a condition will always return a boolean value.
+When to Use
+Code reusability in unit-testing. For tasks involving item evaluation based on predefined criteria.
+To apply filter for a collection of objects.
+
+
+Function
+This interface accepts one argument and returns a value after the required processing.
+
+
+
+
+
+
+
+
+
+
+
+

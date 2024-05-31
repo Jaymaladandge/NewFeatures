@@ -2,7 +2,7 @@ package com.streams;
 
 import java.util.Objects;
 
-public class Employee {
+public class Employee implements Comparable<Employee>{
     private int id;
     private String name;
     private double salary;
@@ -39,11 +39,10 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", salary=" + salary +
-                '}';
+                ", salary=" + salary ;
     }
 
     @Override
@@ -57,5 +56,10 @@ public class Employee {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, salary);
+    }
+
+    @Override
+    public int compareTo(Employee e) {
+        return this.getName().compareTo(e.getName());
     }
 }

@@ -32,3 +32,14 @@ You can call any getter from a plain Java bean with such a method reference.
         Function<Fruit,String> function = Fruit::getName;
         String name = function.apply(new Fruit("Apple","All season"));
 
+
+Fruit fruit = new Fruit(); fruit::getName  VS  Fruit::getName
+
+Fruit::getName: The method reference does not target a specific instance of Fruit. Instead, it targets the getName method
+on any instance of Fruit. This is useful in functional programming contexts where the method needs to be applied
+to multiple instances.
+More flexible as it can be used with any instance of Fruit.
+
+fruit::getName: The method reference targets a specific instance of Fruit (the one referred to by fruit). This is useful
+ when you want to refer to a method on a known, specific object.
+Less flexible as it is tied to the specific instance fruit.

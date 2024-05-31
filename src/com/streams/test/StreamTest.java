@@ -93,7 +93,21 @@ public class StreamTest {
 
         System.out.println("allEven :" +allEven+" anyEven :"+anyEven+" noneMatch :"+noneMatch);
 
+        System.out.println("--------------------------lazy Invocation-----------------------");
 
+        list.stream().filter(emp -> {
+            Employee.counterIncr();
+            return emp.getSalary()>40000;}); //this code will not execute. stream pipeline is missing the terminal operation.
+
+
+        long count = list.stream().filter(emp->{
+            Employee.counterIncr();
+            return emp.getSalary()>40000;
+        }).map(e ->{
+            System.out.println("map method called");
+            return e.getName();
+        }).count();
+        System.out.println("Count is : "+count);    //now intermediate operations will be executed
 
 
 
@@ -119,8 +133,8 @@ public class StreamTest {
         System.out.println(map);
 
 
-        long count = words.stream().collect(Collectors.counting());
-        System.out.println("count : " + count);
+        long counter = words.stream().collect(Collectors.counting());
+        System.out.println("count : " + counter);
 
 
         String join = words.stream().collect(Collectors.joining());

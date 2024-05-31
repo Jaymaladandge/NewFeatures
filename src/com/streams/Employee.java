@@ -7,6 +7,8 @@ public class Employee implements Comparable<Employee>{
     private String name;
     private double salary;
 
+    private static int counter=0;
+
     public Employee(int id, String name, double salary) {
         this.id = id;
         this.name = name;
@@ -35,6 +37,11 @@ public class Employee implements Comparable<Employee>{
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public static int counterIncr(){
+        System.out.println("counterIncr method called : "+counter);
+        return counter++;
     }
 
     @Override

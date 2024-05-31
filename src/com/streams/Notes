@@ -12,6 +12,9 @@ a stream. Like an Iterator, a new stream must be generated to revisit the same e
 - Java stream operations are divided into intermediate and terminal operations.
 A stream pipeline consists of a stream source, followed by zero or more intermediate operations, and a terminal operation.
 
+-Once the stream has been used or closed and if we try to use the same stream it will result in an exception.
+
+
 Lazy Evaluation
 -Computation on the source data is only performed when the terminal operation is initiated, and source elements are
 consumed only as needed.
@@ -38,6 +41,14 @@ A reduction operation (also called as fold) takes a sequence of input elements a
 result by repeated application of a combining operation. We already saw few reduction operations like findFirst(), min()
 and max().
 Sum, min, max, average, and string concatenation are all special cases of reduction.
+
+
+
+Short Circuit Operations
+
+Short-circuit operations provide performance benefits by avoiding unnecessary computations when the desired result can
+be obtained early. They are particularly useful when working with large or infinite streams.
+anyMatch(), findFirst()
 
 
 map()

@@ -1,0 +1,80 @@
+
+Stream
+
+-Stream does not store elements. It simply conveys elements from a source such as a data structure, an array,
+or an I/O channel, through a pipeline of computational operations.
+-Operations performed on a stream does not modify it's source. For example, filtering a Stream obtained from a collection
+produces a new Stream without the filtered elements, rather than removing elements from the source collection.
+-Stream is lazy and evaluates code only when required.-The elements of a stream are only visited once during the life of
+a stream. Like an Iterator, a new stream must be generated to revisit the same elements of the source.
+-You can use stream to filter, collect, print, and convert from one data structure to other etc.
+
+- Java stream operations are divided into intermediate and terminal operations.
+A stream pipeline consists of a stream source, followed by zero or more intermediate operations, and a terminal operation.
+
+Lazy Evaluation
+-Computation on the source data is only performed when the terminal operation is initiated, and source elements are
+consumed only as needed.
+-All intermediate operations are lazy, so they’re not executed until a result of a processing is actually needed.
+
+
+Java Stream Specializations
+From what we discussed so far, Stream is a stream of object references. However, there are also the IntStream, LongStream,
+and DoubleStream – which are primitive specializations for int, long and double respectively. These are quite convenient
+when dealing with a lot of numerical primitives.
+
+These specialized streams do not extend Stream but extend BaseStream on top of which Stream is also built.
+
+As a consequence, not all operations supported by Stream are present in these stream implementations. For example, the standard min() and max() take a comparator, whereas the specialized streams do not.
+
+Specialized streams provide additional operations as compared to the standard Stream – which are quite convenient when
+dealing with numbers. For example sum(), average(), range() etc
+
+
+
+Reduction Operations
+
+A reduction operation (also called as fold) takes a sequence of input elements and combines them into a single summary
+result by repeated application of a combining operation. We already saw few reduction operations like findFirst(), min()
+and max().
+Sum, min, max, average, and string concatenation are all special cases of reduction.
+
+
+map()
+
+-An intermediate operation of the Stream API that is used to transform each element of the stream into another form.
+used to process objects in a stream and produce a new stream with the processed objects.
+-The transformation is done using a given function.
+-The resulting stream will have the same number of elements as the original stream, but each element will have been
+transformed by the provided function.
+-Type Changes: The type of the elements in the resulting stream can be different from the type of the elements in the
+original stream. For example, you can map a stream of integers to a stream of strings.
+
+
+collect()
+
+The collect method is a terminal operation of the Stream API that transforms the elements of a stream into a different
+form, usually a collection such as a List, Set, or Map. The collect method takes a Collector as an argument,
+which specifies how the elements of the stream should be collected.
+
+
+    Integer[] empIds = { 1, 2, 3 };
+    List<Employee> employees = Stream.of(empIds).map(employeeRepository::findById).collect(Collectors.toList());
+
+
+findFirst()
+
+-returns an Optional (a container object which may or may not contain a non-null value) describing
+the first element of this stream, or an empty Optional if the stream is empty.
+
+NullPointerException
+-If a null element is chosen, then the NullPointerException is thrown.
+
+NoSuchElementException
+A java.util.NoSuchElementException is thrown if Stream.findFirst() fails to find an element, returning an empty Optional.
+Before retrieving an element, it is recommended to always check if it is present by using Optional.isPresent().
+
+
+distinct()
+does not take any argument and returns the distinct elements in the stream, eliminating duplicates.
+It uses the equals() method of the elements to decide whether two elements are equal or not

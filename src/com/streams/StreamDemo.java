@@ -95,7 +95,11 @@ public class StreamDemo {
         num.stream().distinct().forEach(System.out::println);
 
 
+
         System.out.println("----Stateless operations doesn’t need to know about any other element to be able to emit a result.---");
+
+        System.out.println("--------------------------Lazy Invocation---------------------------------");
+
         List<Employee> employees = new ArrayList<>();
         employees.add(new Employee(5,"John Smith", 20000));
         employees.add(new Employee(2,"Susan Johnson", 42000));
@@ -114,19 +118,20 @@ public class StreamDemo {
         collect(Collectors.toList());
 
 
-        System.out.println("----------------------------------------------------------");
+        System.out.println("------------------------------------");
         employees.stream().
                 filter(e -> {
                     System.out.println("Filtering employee "+e.getName());
                     return e.getSalary()<80000;
-                }).
-                sorted((e1,e2)->e1.getName().compareTo(e2.getName())).
-                map(e -> {
+                })
+                .sorted((e1,e2)->e1.getName().compareTo(e2.getName()))
+                .map(e -> {
                     System.out.println("Mapping employee "+e.getName());
                     e.setSalary(e.getSalary()*1.05);
                     return e;
                 }).
                 collect(Collectors.toList());
+
 
 
         System.out.println("----------------------------");

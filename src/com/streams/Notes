@@ -16,6 +16,7 @@ A stream pipeline consists of a stream source, followed by zero or more intermed
 
 
 Lazy Evaluation
+
 -Computation on the source data is only performed when the terminal operation is initiated, and source elements are
 consumed only as needed.
 -All intermediate operations are lazy, so they’re not executed until a result of a processing is actually needed.
@@ -28,7 +29,8 @@ when dealing with a lot of numerical primitives.
 
 These specialized streams do not extend Stream but extend BaseStream on top of which Stream is also built.
 
-As a consequence, not all operations supported by Stream are present in these stream implementations. For example, the standard min() and max() take a comparator, whereas the specialized streams do not.
+As a consequence, not all operations supported by Stream are present in these stream implementations. For example,
+the standard min() and max() take a comparator, whereas the specialized streams do not.
 
 Specialized streams provide additional operations as compared to the standard Stream – which are quite convenient when
 dealing with numbers. For example sum(), average(), range() etc

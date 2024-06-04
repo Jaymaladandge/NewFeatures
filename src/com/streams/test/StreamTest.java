@@ -44,9 +44,9 @@ public class StreamTest {
             System.out.println(optional.get());
 
 
-        int n = 10;
+        int num = 10;
         List<Integer> integers = Arrays.asList(10, 12, 2, 4, 8, 5, 7);
-        Optional<Integer> integerOptional = integers.stream().filter(i -> i % 2 == 0).sorted().filter(i -> i > n).findFirst();
+        Optional<Integer> integerOptional = integers.stream().filter(i -> i % 2 == 0).sorted().filter(i -> i > num).findFirst();
         if (integerOptional.isPresent()) {
             System.out.println(integerOptional.get());
         }
@@ -93,21 +93,50 @@ public class StreamTest {
 
         System.out.println("allEven :" +allEven+" anyEven :"+anyEven+" noneMatch :"+noneMatch);
 
-        System.out.println("--------------------------lazy Invocation-----------------------");
+
+
+        System.out.println("-----------------------------lazy Invocation--------------------------------------");
 
         list.stream().filter(emp -> {
             Employee.counterIncr();
             return emp.getSalary()>40000;}); //this code will not execute. stream pipeline is missing the terminal operation.
 
 
-        long count = list.stream().filter(emp->{
-            Employee.counterIncr();
-            return emp.getSalary()>40000;
-        }).map(e ->{
-            System.out.println("map method called");
-            return e.getName();
-        }).count();
+        long count = list.stream()
+            .filter(emp->{
+                Employee.counterIncr();
+                return emp.getSalary()>40000;
+            })
+            .map(e ->{
+                System.out.println("map method called");
+                return e.getName();
+            })
+            .count();
+
         System.out.println("Count is : "+count);    //now intermediate operations will be executed
+        System.out.println("-------------------");
+
+
+
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        Optional<Integer> result = numbers.stream()
+                .filter(n -> {
+                    System.out.println("Filtering: " + n);
+                    return n % 2 == 0;
+                })
+                .map(n -> {
+                    System.out.println("Mapping: " + n);
+                    return n * 2;
+                })
+                .filter(n -> {
+                    System.out.println("Filtering > 10: " + n);
+                    return n > 10;
+                })
+                .findFirst();
+
+        System.out.println("Result: " + result.orElse(null));
+
 
 
 

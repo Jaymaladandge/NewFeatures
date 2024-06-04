@@ -1,0 +1,79 @@
+
+Optional Class
+
+java.util package
+-Designed to reduce the number of null checks in code.
+-Optional is a container that either contains a non-null value or nothing(empty Optional ).
+-With Optional, you can write cleaner and more concise code that is easier to maintain.
+-One of the key benefits of using Optional is that it forces you to handle the case where the value is absent.
+you can either provide a default value or throw an exception.
+
+
+
+Creating Optional Class Instance
+
+Optional.ofNullable() method
+Optional<T> optional = Optional.ofNullable(T);
+This method returns an Optional instance with given value. If provided value is null, then it returns an empty Optional Instance.
+
+Optional.of() method
+-This method behave like the ofNullable() function it will return an Optional for the given value the only difference is
+that the of() method does not allow to construct an Optional object around a null value .
+-Optional<Student> student = Optional.of(null);
+this line will throw a NullPointerException .
+
+Optional.empty() method
+This method returns an Optional instance with empty value. It can be used to represent an absent value instead of null.
+Optional emptyOptional = Optional.empty();
+
+
+
+Checking Optional Class Instance Value
+
+These methods should be used before using get() method to obtain the value of the Optional instance as get() method
+can throw null pointer exception in case underlying value is null.
+
+isPresent()
+This method checks the current optional instance and returns true/false based on value being present or not.
+
+isEmpty()
+This method checks the current optional instance and returns true/false based on value being present or not.
+This method was added to Optional API in Java 11.
+
+
+
+Using Default Value With Optional Class Methods
+
+orElse(default d)
+This method returns checks the current optional instance and returns its value if present otherwise it returns
+the provided default value.
+
+orElseGet(Supplier)
+This method returns checks the current optional instance and returns its value if present
+otherwise it invokes the supplier function passed to the generate the default value and return the same.
+
+
+
+Optional Class Methods for Throwing Exception
+
+orElseThrow(Supplier)
+used to throw an exception if the Optional is empty.
+
+
+
+get()
+Returns the value wrapped by the Optional if present.
+Throws: NoSuchElementException if the Optional is empty.
+
+
+void ifPresent(Consumer<? super T> consumer)
+Executes the specified consumer function with the value wrapped by the Optional if present.
+
+
+
+
+the use of identity-sensitive operations (including reference equality (==), identity hash code, or synchronization)
+on instances of Optional may have unpredictable results and should be avoided.
+
+
+

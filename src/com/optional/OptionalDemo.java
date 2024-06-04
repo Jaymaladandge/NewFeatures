@@ -1,4 +1,4 @@
-package com;
+package com.optional;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;

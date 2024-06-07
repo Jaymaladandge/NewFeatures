@@ -10,8 +10,9 @@ java.util package
 you can either provide a default value or throw an exception.
 
 
--The intended use of Optional is mainly as a return type.
--Do not use it as a field in a class as it is not serializable
+Note
+-The intended use of Optional is mainly "as a return type".
+-Do not use it "as a field in a class" as it is not serializable
 -Do not use it as a parameter for constructors and methods as it would lead to unnecessarily complicated code.
 
 

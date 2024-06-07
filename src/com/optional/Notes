@@ -4,9 +4,15 @@ Optional Class
 java.util package
 -Designed to reduce the number of null checks in code.
 -Optional is a container that either contains a non-null value or nothing(empty Optional ).
+-In essence, Optional is a wrapper class that contains a reference to some other object.
 -With Optional, you can write cleaner and more concise code that is easier to maintain.
 -One of the key benefits of using Optional is that it forces you to handle the case where the value is absent.
 you can either provide a default value or throw an exception.
+
+
+-The intended use of Optional is mainly as a return type.
+-Do not use it as a field in a class as it is not serializable
+-Do not use it as a parameter for constructors and methods as it would lead to unnecessarily complicated code.
 
 
 
@@ -67,13 +73,19 @@ Throws: NoSuchElementException if the Optional is empty.
 
 
 void ifPresent(Consumer<? super T> consumer)
-Executes the specified consumer function with the value wrapped by the Optional if present.
+Executes the specified consumer function with the value wrapped by the Optional if present, otherwise does nothing.
 
+
+flatMap()
 
 
 
 the use of identity-sensitive operations (including reference equality (==), identity hash code, or synchronization)
 on instances of Optional may have unpredictable results and should be avoided.
+
+
+Some of the methods are newly added to the Optional class since java 9.
+Optional.or(), Optional.ifPresentOrElse(), Optional.stream()
 
 
 

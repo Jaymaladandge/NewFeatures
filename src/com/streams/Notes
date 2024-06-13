@@ -72,6 +72,30 @@ mapToObj()
 -It is especially useful when you want to transform a primitive stream (such as IntStream) to a stream of objects (Stream<T>).
 
 
+Collectors.groupingBy()
+
+-This method gives us a similar functionality to the "GROUP BY" statement in SQL.
+-We use to group objects by a given specific property and store the end result in a map.
+
+-Collectors.groupingBy(classifier) with a Classification Function
+This method returns a Collector that groups the input elements according to the classification function, and returns
+the result in a Map.
+-Collectors.groupingBy(classifier,downstream) with a Classification Function and Downstream Collector
+This method returns a Collector that groups the input elements to the classification function,
+afterwards applying a reduction operation on the values associated with a given key using the specified downstream Collector.
+
+-Collectors.mapping(mapper,downstream)
+A mapper - a function to be applied to the input elements and
+A downstream collector – a collector which will accept mapped values
+
+-Collectors.groupingBy() with Collectors.counting()
+reduction operations are very powerful and can be used to find the minimum, maximum, average, sums
+
+-Collectors.groupingBy(classifier,mapFactory,downstream) with a Classification Function, Downstream Collector and Supplier
+The only difference from earlier is that we've added another parameter mapFactory that specifies
+the exact implementation of Map we want to use.
+
+
 
 collect()
 

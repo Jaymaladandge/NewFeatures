@@ -6,6 +6,7 @@ public class Employee implements Comparable<Employee>{
     private int id;
     private String name;
     private double salary;
+    private String city;
 
     private static int counter=0;
 
@@ -13,6 +14,13 @@ public class Employee implements Comparable<Employee>{
         this.id = id;
         this.name = name;
         this.salary = salary;
+    }
+
+    public Employee(int id, String name, double salary, String city) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+        this.city = city;
     }
 
     public int getId() {
@@ -37,6 +45,14 @@ public class Employee implements Comparable<Employee>{
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public static int counterIncr(){

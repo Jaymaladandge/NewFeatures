@@ -64,6 +64,15 @@ transformed by the provided function.
 original stream. For example, you can map a stream of integers to a stream of strings.
 
 
+
+mapToObj()
+
+-is part of the IntStream, LongStream, and DoubleStream classes.
+-This method is used to map the elements of the stream to objects of a different type. returns an object-valued Stream
+-It is especially useful when you want to transform a primitive stream (such as IntStream) to a stream of objects (Stream<T>).
+
+
+
 collect()
 
 The collect method is a terminal operation of the Stream API that transforms the elements of a stream into a different

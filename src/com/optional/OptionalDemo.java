@@ -41,7 +41,7 @@ public class OptionalDemo {
         opt.ifPresent(System.out::println);
 
         Optional<String> optional = Optional.empty();
-        System.out.println(""+optional.map(String::toLowerCase));
+        System.out.println("===="+optional.map(String::toLowerCase));
 
     }
 

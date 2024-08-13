@@ -16,8 +16,10 @@ public class StreamDemo {
         Arrays.asList(5,3,7,8,1).stream().filter(n -> n%2!=0).map(n->n*2).forEach(System.out::println);
         System.out.println("-----------------------------");
 
+
         int result = Arrays.asList(5,26,78,25,1).stream().filter(n->n%2!=0).map(n->n*2).reduce(0,(a,b)->a+b);
         System.out.println("result : "+result);
+
 
         System.out.println("----------------------------------");
         String[] names = {"Pavan", "Kiran","Paurnima", "Deepali"};

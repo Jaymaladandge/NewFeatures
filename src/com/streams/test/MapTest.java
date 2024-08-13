@@ -2,9 +2,8 @@ package com.streams.test;
 
 import com.streams.Employee;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -36,8 +35,14 @@ public class MapTest {
         list.stream().collect(Collectors.groupingBy(e->e.getCity(),
                         TreeMap::new,
                         Collectors.mapping(e->e.getName(), Collectors.toList())))
-                        .forEach((k,v)->System.out.println(k+" "+v));
+                        .forEach((k,v)->System.out.println(k+"="+v));
 
+
+        String s = "Welcome to Java";
+        String[] arr = s.split("");
+        System.out.println(Arrays.toString(arr));
+        Map<String, Long> map = Arrays.stream(arr).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        map.forEach((k,v)-> System.out.println(k+"=="+v));
     }
 
 }

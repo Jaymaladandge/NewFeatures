@@ -28,5 +28,6 @@ public class PredicateTest {
 
         Predicate<String> predicate3 = Objects::nonNull;
         System.out.println("Is null : "+predicate3.test(null));
+
     }
 }

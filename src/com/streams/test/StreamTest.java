@@ -41,7 +41,7 @@ public class StreamTest {
 
         Optional<Employee> employee = list.stream().filter(emp -> emp.getSalary() > 30000).findAny();
         if (optional.isPresent())
-            System.out.println(optional.get());
+            System.out.println("findAny : "+optional.get());
 
 
         int num = 10;
@@ -91,7 +91,7 @@ public class StreamTest {
         boolean anyEven = list2.stream().anyMatch(i -> i % 2 == 0); //Here, again short-circuiting is applied and true is returned immediately after the first element.
         boolean noneMatch = list2.stream().noneMatch(i -> i % 3 == 0);// it simply returns false as soon as it encounters 3, which is divisible by 3.
 
-        System.out.println("allEven :" +allEven+" anyEven :"+anyEven+" noneMatch :"+noneMatch);
+        System.out.println("allEven :" +allEven+" | anyEven :"+anyEven+" | noneMatch :"+noneMatch);
 
 
 
@@ -159,7 +159,7 @@ public class StreamTest {
 
         List<String> words = Arrays.asList("hello", "world", "java", "stream");
         Map<String, Integer> map = words.stream().collect(Collectors.toMap(word -> word, word -> word.length()));
-        System.out.println(map);
+        System.out.println("========="+map);
 
 
         long counter = words.stream().collect(Collectors.counting());
@@ -177,6 +177,25 @@ public class StreamTest {
         Map<Boolean, List<String>> map2 = words.stream().collect(Collectors.partitioningBy(w -> w.length() > 5));
         System.out.println(map2);
 
+        System.out.println("----------------------------------");
+
+        double salSum = list.stream().map(product -> product.getSalary()).reduce(Double::sum).get();
+
+
+        salSum = list.stream().map(product -> product.getSalary()).reduce((p1,p2) -> Double.sum(p1, p2)).get();
+        System.out.println("----------salSum-----------"+salSum);
+
+
+        OptionalDouble op = list.stream().mapToDouble(p -> p.getSalary()).reduce(Double::sum);
+        System.out.println("-------------------------"+op.getAsDouble());
+
+
+        double salDouble = list.stream().mapToDouble(p -> p.getSalary()).sum();
+        System.out.println("---------salDouble---------"+salDouble);
+
+
+        double totalPrice3 = list.stream().collect(Collectors.summingDouble(p -> p.getSalary()));
+        System.out.println("totalPrice3 : " + totalPrice3);
 
 
     }

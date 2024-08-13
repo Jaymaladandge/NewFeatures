@@ -42,14 +42,14 @@ public class Test {
                 .mapToObj(c -> Character.valueOf((char) c)) // bit messy as chars() returns an IntStream, not a CharStream (which doesn't exist)
                 .distinct()
                 .map(Object::toString)
-                .collect(Collectors.joining(""));
+                .collect(Collectors.joining(","));
         System.out.println("=========="+out);
 
         System.out.println("---------------------------------------------------------");
 
         int[] i = {1,2,3,4};
         alter(i);
-        System.out.println("i "+ i);
+        System.out.println("i "+ Arrays.toString(i));
 
     }
 

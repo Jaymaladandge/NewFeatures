@@ -10,8 +10,9 @@ public class ArmstrongNumber {
         char[] ch = s.toCharArray();
 
         for (int i = 0; i <= ch.length - 1; i++) {
-            int b = (int) ch[i];
-            b = Integer.valueOf(String.valueOf(ch[i]));
+        	
+            int b = Integer.valueOf(String.valueOf(ch[i]));
+            System.out.println("======"+b);
             int n = b;
 
             for (int j = 1; j <= ch.length - 1; j++) {

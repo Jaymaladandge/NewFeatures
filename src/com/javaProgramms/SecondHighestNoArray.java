@@ -23,12 +23,12 @@ public class SecondHighestNoArray {
 
         int[] arr = new int[] { 2, 9, 12, 4, 5, 11};
 
-        int first = arr[0];  		//12
-        int second = arr[1];		//9
+        int first = arr[0];  		//
+        int second = arr[1];		//
 
         if (first < second) {
-            first = arr[1];
-            second = arr[0];
+            first = arr[1];			//9
+            second = arr[0];		//2
         }
 
         for (int i = 2; i <= arr.length-1 ; i++) {

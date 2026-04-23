@@ -43,8 +43,17 @@ public class Test {
                 .distinct()
                 .map(Object::toString)
                 .collect(Collectors.joining(","));
-        System.out.println("=========="+out);
+        System.out.println(out);
 
+        
+        out = s.chars()  // Stream of int values (character codes)
+                .distinct()  // Removes duplicates
+                .mapToObj(c -> String.valueOf((char) c))  // Convert int to a string representation of the char
+                .collect(Collectors.joining(","));  // Collect as a comma-separated string
+
+        System.out.println(out);  // Output: "a,s,d,f,g"
+
+        
         System.out.println("---------------------------------------------------------");
 
         int[] i = {1,2,3,4};

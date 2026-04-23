@@ -40,7 +40,7 @@ public class Fruit {
     public String toString() {
         return
                 "name='" + name + '\'' +
-                ", season='" + season + '\'' ;
+                ", season=='" + season + '\'' ;
     }
 }
 

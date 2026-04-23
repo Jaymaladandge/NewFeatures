@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class FunctionDemo {
 
@@ -12,7 +13,8 @@ public class FunctionDemo {
     }
 
     public int add(List<Integer> list){
-        return list.stream().mapToInt(Integer::intValue).sum();
+    	return list.stream().collect(Collectors.summingInt((lst)-> lst));
+        //return list.stream().mapToInt(Integer::intValue).sum();
     }
 
     public String find(int num, List<Integer> list){

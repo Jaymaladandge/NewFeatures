@@ -135,6 +135,25 @@ public class StreamDemo {
                 collect(Collectors.toList());
 
 
+        /*
+| Stream Step | Stateless/Stateful | Affects Laziness? | Effect                                     |
+| ----------- | ------------------ | ----------------- | ------------------------------------------ |
+| `filter()`  | Stateless          | No                | Evaluated lazily per element               |
+| `map()`     | Stateless          | No                | Lazy, processed after filter               |
+| `sorted()`  | **Stateful**       | **Yes**           | Triggers full processing of previous stage |
+
+
+filter() is stateless — it doesn't need to see the whole stream.
+But sorted() is stateful — it must see the entire filtered stream before it can sort.
+
+So, the pipeline does:
+
+Applies filter() to all elements → collects the result.
+Sorts all filtered elements.
+Then applies map() on the sorted, filtered elements.
+
+        
+         */
 
         System.out.println("----------------------------");
         employees.stream().limit(2).forEach(System.out::println);

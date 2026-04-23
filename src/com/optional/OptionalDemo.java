@@ -1,6 +1,5 @@
 package com.optional;
 
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class OptionalDemo {
@@ -37,7 +36,7 @@ public class OptionalDemo {
         System.out.println("------------==================------------");
 
         String[] str = new String[10];
-        Optional opt = Optional.ofNullable(str[5]);
+        Optional<String> opt = Optional.ofNullable(str[5]);
         opt.ifPresent(System.out::println);
 
         Optional<String> optional = Optional.empty();

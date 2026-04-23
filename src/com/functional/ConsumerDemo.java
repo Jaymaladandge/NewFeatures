@@ -23,6 +23,7 @@ public class ConsumerDemo {
 
     public static void printValues(List<String> list, Consumer<String> consumer) {
         for (String s : list) {
+        	System.out.println("===");
             consumer.accept(s);
         }
     }
@@ -44,7 +45,7 @@ public class ConsumerDemo {
 
         Product product1 = new Product();
         Consumer<Integer> con1 = product1::setPrice;
-        con1.accept(50);
+        con1.accept(500);
         product1.showPrice();
 
         System.out.println("---------------");
@@ -61,10 +62,11 @@ public class ConsumerDemo {
         System.out.println("-----------------------------------------------------");
 
 
-        BiConsumer biCon = (a, b) -> System.out.println("Sum " + ((int) a + (int) b));
+        BiConsumer<Integer, Integer> biCon = (a, b) -> System.out.println("Sum " + ( a + b));
         biCon.accept(10, 20);
 
 
+        
         BiConsumer<Integer, Integer> compare = (Integer age, Integer grade) -> {
             if (age < 18 && grade < 40)
                 System.out.println("Not eligible");

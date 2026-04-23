@@ -54,7 +54,7 @@ public class OptionalTest {
 
 
         String s = optional2.filter(emp -> emp.getSalary()>50000).map(emp -> emp.getName()).orElse("Salary s less than 50000");
-        System.out.println("Employee name having sal<50k : "+s);
+        System.out.println("Employee name having sal>50k : "+s);
 
         optional2.ifPresent(emp ->{
             double tax = emp.getSalary()>50000 ? emp.getSalary()*0.10 : 0.0;

@@ -11,6 +11,11 @@ import java.util.function.Supplier;
 
 public class SupplierDemo {
 
+	
+	/*
+	public <T> ...
+	The <T> before the return type is a generic type parameter declaration. It means that the method is generic and can work with any type T.
+	*/
 
     public <T> Supplier<List<T>> supply() {
         // return ()-> new ArrayList<>();

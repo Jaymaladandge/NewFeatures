@@ -67,7 +67,7 @@ public class StreamTest {
         }).forEach(System.out::println);
 
 
-        Employee employee1 = list.stream().max((e1, e2) -> e1.getName().compareTo(e2.getName())).orElseThrow(NoSuchElementException::new);
+        Employee employee1 = list.stream().max((e1, e2) -> e2.getName().compareTo(e1.getName())).orElseThrow(NoSuchElementException::new);
         System.out.println("\nemployee1 : " + employee1);
 
 
@@ -145,12 +145,12 @@ public class StreamTest {
 
         List<String> list3 = Arrays.asList("Hello", "world", "java", "stream", "java");
         Set<String> set = list3.stream().map(x -> x.toUpperCase()).collect(Collectors.toSet());
-        System.out.println(set);
+        System.out.println("set "+set);
 
 
         List<Integer> list4 = Arrays.asList(1, 2, 3, 4, 5);
         List<String> strings = list4.stream().map(String::valueOf).collect(Collectors.toList());
-        System.out.println(strings);
+        System.out.println("strings "+strings);
 
 
         HashSet<String> toSet = list3.stream().collect(Collectors.toCollection(() -> new HashSet<>())); //toCollection(HashSet::new);
@@ -163,6 +163,8 @@ public class StreamTest {
 
 
         long counter = words.stream().collect(Collectors.counting());
+        System.out.println("count : " + counter);
+        counter = words.stream().count();
         System.out.println("count : " + counter);
 
 
